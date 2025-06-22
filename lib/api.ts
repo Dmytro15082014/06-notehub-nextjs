@@ -51,8 +51,15 @@ export async function deleteNote(noteId: number): Promise<Note> {
   return res.data;
 }
 
-export async function getNotes(): Promise<FetchNotesResponse> {
-  const { data } = await axios.get<FetchNotesResponse>('/notes', {
+export async function getNotes(): Promise<Note[]> {
+  const { data } = await axios.get<Note[]>('/notes', {
+    headers: headersToken,
+  });
+  return data;
+}
+
+export async function fetchNoteById(id: number): Promise<Note> {
+  const { data } = await axios.get<Note>(`/notes/${id}`, {
     headers: headersToken,
   });
   return data;

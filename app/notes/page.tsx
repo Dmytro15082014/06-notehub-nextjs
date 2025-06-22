@@ -1,7 +1,6 @@
 import {
   dehydrate,
   HydrationBoundary,
-  //   keepPreviousData,
   QueryClient,
 } from '@tanstack/react-query';
 import { getNotes } from '../../lib/api';
