@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import css from './NoteForm.module.css';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import type { NoteInput } from '../../types/note';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -68,7 +68,7 @@ export default function NoteForm({ cancel }: NoteFormProps) {
               name="title"
               className={css.input}
             />
-            {/* <ErrorMessage component="span" name="title" className={css.error} /> */}
+            <ErrorMessage component="span" name="title" className={css.error} />
           </div>
 
           <div className={css.formGroup}>
@@ -80,11 +80,11 @@ export default function NoteForm({ cancel }: NoteFormProps) {
               rows={8}
               className={css.textarea}
             />
-            {/* <ErrorMessage
+            <ErrorMessage
               component="span"
               name="content"
               className={css.error}
-            /> */}
+            />
           </div>
 
           <div className={css.formGroup}>
@@ -101,7 +101,7 @@ export default function NoteForm({ cancel }: NoteFormProps) {
               <option value="Meeting">Meeting</option>
               <option value="Shopping">Shopping</option>
             </Field>
-            {/* <ErrorMessage component="span" name="tag" className={css.error} /> */}
+            <ErrorMessage component="span" name="tag" className={css.error} />
           </div>
 
           <div className={css.actions}>

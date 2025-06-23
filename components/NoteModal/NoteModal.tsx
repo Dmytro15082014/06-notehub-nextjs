@@ -25,18 +25,16 @@ export default function NoteModal({ onClose }: NoteModalProps) {
   }, [onClose]);
 
   return createPortal(
-    <>
-      <div
-        className={css.backdrop}
-        role="dialog"
-        aria-modal="true"
-        onClick={handleBackDropClose}
-      >
-        <div className={css.modal}>
-          <NoteForm cancel={onClose} />
-        </div>
+    <div
+      className={css.backdrop}
+      role="dialog"
+      aria-modal="true"
+      onClick={handleBackDropClose}
+    >
+      <div className={css.modal}>
+        <NoteForm cancel={onClose} />
       </div>
-    </>,
+    </div>,
     document.body
   );
 }

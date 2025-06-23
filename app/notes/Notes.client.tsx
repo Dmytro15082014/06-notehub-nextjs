@@ -8,8 +8,13 @@ import NoteList from '../../components/NoteList/NoteList';
 import Pagination from '../../components/Pagination/Pagination';
 import NoteModal from '../../components/NoteModal/NoteModal';
 import { fetchNotes } from '../../lib/api';
+import { FetchNotesResponse } from '../../lib/api';
 
-const NotesClient = () => {
+type Props = {
+  items: FetchNotesResponse;
+};
+
+const NotesClient = ({ items }: Props) => {
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
   const [debouncedSearch] = useDebounce(search, 300);
@@ -17,6 +22,7 @@ const NotesClient = () => {
   const { data, isSuccess } = useQuery({
     queryKey: ['note', debouncedSearch, page],
     queryFn: () => fetchNotes(debouncedSearch, page),
+    initialData: items,
     refetchOnMount: false,
     placeholderData: keepPreviousData,
   });

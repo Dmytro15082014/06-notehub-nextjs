@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { type Note, type NoteInput } from '../types/note';
 
-interface FetchNotesResponse {
+export interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
 }
@@ -49,13 +49,6 @@ export async function deleteNote(noteId: number): Promise<Note> {
     headers: headersToken,
   });
   return res.data;
-}
-
-export async function getNotes(): Promise<Note[]> {
-  const { data } = await axios.get<Note[]>('/notes', {
-    headers: headersToken,
-  });
-  return data;
 }
 
 export async function fetchNoteById(id: number): Promise<Note> {
